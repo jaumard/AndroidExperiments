@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.jaumard.owt"
+        minSdkVersion 14
+        targetSdkVersion 25
+        vectorDrawables.useSupportLibrary = true
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_API_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w300_and_h450_bestv2/\""
+        buildConfigField "String", "DATABASE_NAME", "\"catalog-history\""
+        buildConfigField "String", "API_KEY", "\"API_KEY\""
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // DI Dagger2
+    compile "com.jakewharton.timber:timber:${rootProject.ext.timberVersion}"
+    compile "com.google.dagger:dagger:${rootProject.ext.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.dagger}"
+    compile "com.github.bumptech.glide:glide:${rootProject.ext.glide}"
+    compile "com.android.support:cardview-v7:${rootProject.ext.androidSupport}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.androidSupport}"
+    compile "android.arch.persistence.room:runtime:${rootProject.ext.androidArch}"
+    compile "android.arch.lifecycle:runtime:${rootProject.ext.androidArch}"
+    compile "android.arch.lifecycle:extensions:${rootProject.ext.androidArch}"
+    annotationProcessor "android.arch.lifecycle:compiler:${rootProject.ext.androidArch}"
+    annotationProcessor "android.arch.persistence.room:compiler:${rootProject.ext.androidArch}"
+    compile "android.arch.persistence.room:rxjava2:${rootProject.ext.androidArch}"
+    compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupport}"
+    compile "com.android.support:design:${rootProject.ext.androidSupport}"
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit}"
+    compile "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit}"
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit}"
+    compile "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttpLogging}"
+    compile "io.reactivex.rxjava2:rxjava:${rootProject.ext.rx2}"
+    compile "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rx2Android}"
+    compile "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintLayout}"
+    compile "com.google.firebase:firebase-auth:${rootProject.ext.firebase}"
+    compile "com.google.android.gms:play-services-auth:${rootProject.ext.firebase}"
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'

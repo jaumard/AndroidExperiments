@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Movie Catalog</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Log in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_existed_email">This email is already used</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="search_title">Search</string>
+    <string name="logout">Logout</string>
+    <string name="history">History</string>
+    <string name="auth_failed">Authentification failed, please check your informations</string>
+    <string name="action_register">Register</string>
+    <string name="screen_title_login">Connexion</string>
+    <string name="screen_title_catalog">Catalog</string>
+    <string name="screen_title_historic">History</string>
+    <string name="error_network">An error occurred, please check your connexion and try again</string>
+    <string name="poster">Movie poster</string>
+    <string name="error_database">An error occurred when retriving your history, please try again later</string>
+</resources>

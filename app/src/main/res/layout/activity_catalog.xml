@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.jaumard.owt.viewmodels.CatalogViewModel"/>
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshing="@{viewModel.isRequestPending}">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isRequestPending?View.GONE:View.VISIBLE}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:toast="@{viewModel.genericError}"
+            bind:itemLayout="@{@layout/item_catalog_entry}"
+            bind:items="@{viewModel.catalogEntries}"
+            bind:onItemClick="@{viewModel.onItemClick}"
+            tools:context=".ui.activities.CatalogActivity">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

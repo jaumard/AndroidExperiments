@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.jaumard.owt.viewmodels.HistoryViewModel"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activities.DetailsActivity">
+
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/default_space"
+            android:visibility="@{viewModel.isRequestPending?View.VISIBLE:View.GONE}"
+            bind:toast="@{viewModel.genericError}"
+            tools:visibility="visible"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isRequestPending?View.GONE:View.VISIBLE}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            bind:itemLayout="@{@layout/item_catalog_entry}"
+            bind:items="@{viewModel.catalogEntries}"
+            bind:onItemClick="@{viewModel.onItemClick}">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</layout>

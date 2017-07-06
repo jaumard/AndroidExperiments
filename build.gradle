@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://maven.google.com' }
+    }
+}
+
+ext {
+    androidSupport = "25.4.0"
+    retrofit = "2.3.0"
+    androidArch = "1.0.0-alpha3"
+    glide = "3.8.0"
+    dagger = "2.11"
+    okhttpLogging = "3.8.1"
+    rx2 = "2.1.1"
+    rx2Android = "2.0.1"
+    constraintLayout = "1.1.0-beta1"
+    firebase = "11.0.2"
+
+    timberVersion = "4.5.1"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
